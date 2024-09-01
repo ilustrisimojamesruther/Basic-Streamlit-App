@@ -1,20 +1,80 @@
 import streamlit as st
 from PIL import Image
 
-# Set up the page
-st.set_page_config(page_title="My Autobiography & Portfolio", layout="wide")
+# Set up the page with a custom theme
+st.set_page_config(page_title="My Autobiography & Portfolio", layout="centered")
 
-# Sidebar content
-st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("Go to", ["Autobiography", "Portfolio"])
+# Define custom CSS to apply the maroon and gold theme with a grey background
+st.markdown("""
+    <style>
+        /* Main page background color */
+        .stApp {
+            background-color: #D3D3D3; /* Light grey */
+        }
 
-# Autobiography Section
-if page == "Autobiography":
+        /* Header styling */
+        h1 {
+            color: #800000; /* Maroon */
+            text-align: center;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+
+        /* Subheader styling */
+        h2 {
+            color: #FFD700; /* Gold */
+            font-family: 'Verdana', sans-serif;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 5px;
+        }
+
+        /* Text block styling */
+        p, ul {
+            color: #4b3832;
+            font-family: 'Verdana', sans-serif;
+            font-size: 1.1em;
+        }
+
+        /* Footer styling */
+        footer {
+            font-family: 'Verdana', sans-serif;
+            color: #800000;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Custom button style */
+        .stButton>button {
+            color: white;
+            background-color: #800000; /* Maroon */
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: 'Verdana', sans-serif;
+        }
+        .stButton>button:hover {
+            background-color: #A52A2A; /* Darker Maroon */
+        }
+
+        /* Aligning images */
+        .stImage img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            border: 3px solid #FFD700; /* Gold Border */
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Create separate pages for Autobiography, Portfolio, and Contact
+def autobiography_page():
     st.title("My Autobiography")
 
     # Add a picture (adjusted size)
-    image = Image.open("portfolio.jpg")  
-    st.image(image, caption="This is me", use_column_width=False, width=300)
+    image = Image.open("portfolio.jpg")
+    st.image(image, caption="This is me", use_column_width=False, width=250)
 
     st.header("About Me")
     st.write("""
@@ -42,8 +102,7 @@ if page == "Autobiography":
         - **Databases**: MySQL, Firestore
     """)
 
-# Portfolio Section
-elif page == "Portfolio":
+def portfolio_page():
     st.title("My Portfolio")
 
     st.subheader("Projects")
@@ -66,12 +125,25 @@ elif page == "Portfolio":
     """)
     st.progress(75)
 
-# Contact Section
+def contact_page():
+    st.title("Get in Touch")
 
+    st.write("I'd love to hear from you! Feel free to reach out using the form below.")
     st.subheader("Connect with me on social media:")
     st.write("[Instagram](https://www.instagram.com/be_like_james/)")
     st.write("[Facebook](https://www.facebook.com/ilmo45/)")
 
+# Display a main menu for page selection
+st.title("Welcome to My Personal Site")
+page = st.selectbox("Choose a page", ["Autobiography", "Portfolio", "Contact"])
+
+if page == "Autobiography":
+    autobiography_page()
+elif page == "Portfolio":
+    portfolio_page()
+elif page == "Contact":
+    contact_page()
+
 # Footer
-st.sidebar.markdown("---")
-st.sidebar.markdown("© 2024 by James Ruther I. Ilustrisimo. All rights reserved.")
+st.markdown("---")
+st.markdown("© 2024 by James Ruther I. Ilustrisimo. All rights reserved.")
