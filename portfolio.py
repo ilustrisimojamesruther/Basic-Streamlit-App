@@ -4,7 +4,7 @@ from PIL import Image
 # Set up the page with a custom theme
 st.set_page_config(page_title="My Autobiography & Portfolio", layout="centered")
 
-# Define custom CSS to apply the maroon and gold theme with a grey background and center the image
+# Define custom CSS to apply the maroon and gold theme with a grey background
 st.markdown("""
     <style>
         /* Main page background color */
@@ -74,7 +74,15 @@ def autobiography_page():
 
     # Add a picture (adjusted size)
     image = Image.open("portfolio.jpg")
-    st.image(image, caption="This is me", use_column_width=False, width=250)
+    st.markdown(
+        f"""
+        <div style="display: flex; justify-content: center;">
+            <img src="data:image/png;base64,{st.image(image).data}" 
+            style="width: 300px; height: auto; border-radius: 10px; border: 3px solid #FFD700;" />
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     st.header("About Me")
     st.write("""
