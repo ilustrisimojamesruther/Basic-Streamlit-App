@@ -4,7 +4,7 @@ from PIL import Image
 # Set up the page with a custom theme
 st.set_page_config(page_title="My Autobiography & Portfolio", layout="centered")
 
-# Define custom CSS to apply the maroon and gold theme with a grey background
+# Define custom CSS to apply the maroon and gold theme with a grey background and center the image
 st.markdown("""
     <style>
         /* Main page background color */
@@ -132,8 +132,7 @@ def contact_page():
     st.subheader("Connect with me on social media:")
     st.write("[Instagram](https://www.instagram.com/be_like_james/)")
     st.write("[Facebook](https://www.facebook.com/ilmo45/)")
-    st.write("[Facebook](https://github.com/ilustrisimojamesruther/Basic-Streamlit-App.git)")
-
+    st.write("[GitHub](https://github.com/ilustrisimojamesruther/Basic-Streamlit-App.git)")
 
 # Display a main menu for page selection
 st.title("Welcome to My Personal Site")
