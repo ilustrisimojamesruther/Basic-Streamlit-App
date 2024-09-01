@@ -132,6 +132,8 @@ def contact_page():
     st.subheader("Connect with me on social media:")
     st.write("[Instagram](https://www.instagram.com/be_like_james/)")
     st.write("[Facebook](https://www.facebook.com/ilmo45/)")
+    st.write("[Facebook](https://github.com/ilustrisimojamesruther/Basic-Streamlit-App.git)")
+
 
 # Display a main menu for page selection
 st.title("Welcome to My Personal Site")
